@@ -14,7 +14,7 @@ type Selection struct {
 
 func main() {
 	sele := Selection{}
-	flag.IntVar(&sele.top, "t", 1, "top line number of selection")
+	flag.IntVar(&sele.top, "t", 1, "line number of selection's top")
 	flag.IntVar(&sele.height, "h", 1, "height of line of selection")
 	flag.IntVar(&sele.left, "l", 0, "column number of selection's lefside")
 	flag.IntVar(&sele.width, "w", 1, "number of columns of selection")
