@@ -14,12 +14,12 @@ type Selection struct {
 
 func main() {
 	sele := Selection{}
-	sele.top = *flag.Int("t", 1, "top line number of selection")
-	sele.height = *flag.Int("h", 1, "height of line of selection")
-	sele.left = *flag.Int("l", 0, "column number of selection's lefside")
-	sele.width = *flag.Int("w", 1, "number of columns of selection")
+	flag.IntVar(&sele.top, "t", 1, "top line number of selection")
+	flag.IntVar(&sele.height, "h", 1, "height of line of selection")
+	flag.IntVar(&sele.left, "l", 0, "column number of selection's lefside")
+	flag.IntVar(&sele.width, "w", 1, "number of columns of selection")
+
 	flag.Parse()
 
-	sele.top = 10
 	fmt.Printf("%v", sele)
 }
