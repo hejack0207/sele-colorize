@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strings"
 )
 
 type Selection struct {
@@ -28,6 +29,6 @@ func main() {
 	flag.StringVar(&filepath, "f", "", "file to print")
 
 	flag.Parse()
-
-	fmt.Printf("start:%s,end:%s", start, end)
+	strings.Split(start, ",")
+	//fmt.Printf("start:%s,end:%s", start, end)
 }
