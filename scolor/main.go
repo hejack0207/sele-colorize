@@ -6,20 +6,28 @@ import (
 )
 
 type Selection struct {
-	top    int
-	height int
-	left   int
-	width  int
+	start Pos
+	end   Pos
+}
+
+type Pos struct {
+	line   int
+	column int
 }
 
 func main() {
-	sele := Selection{}
-	flag.IntVar(&sele.top, "t", 1, "line number of selection's top")
-	flag.IntVar(&sele.height, "h", 1, "height of line of selection")
-	flag.IntVar(&sele.left, "l", 0, "column number of selection's lefside")
-	flag.IntVar(&sele.width, "w", 1, "number of columns of selection")
+	var (
+		start    string
+		end      string
+		offset   int
+		filepath string
+	)
+	flag.StringVar(&start, "start", "1,0", "start position of selection")
+	flag.StringVar(&end, "end", "1,0", "end position of selection")
+	flag.IntVar(&offset, "offset", 0, "offset of bytes in file")
+	flag.StringVar(&filepath, "f", "", "file to print")
 
 	flag.Parse()
 
-	fmt.Printf("%v", sele)
+	fmt.Printf("start:%s,end:%s", start, end)
 }
