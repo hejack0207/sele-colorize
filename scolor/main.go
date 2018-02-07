@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -33,4 +34,28 @@ func main() {
 	flag.Parse()
 	lc := strings.Split(pos, ",")
 	fmt.Printf("line:%s,column:%s", lc[0], lc[1])
+
+	f, e := os.Open(filepath)
+	defer f.Close()
+	if e != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", e)
+		os.Exit(1)
+	}
+	fi, e := f.Stat()
+	if e != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", e)
+		os.Exit(1)
+	}
+	fc := make([]byte, fi.Size())
+
+	n, err := f.Read(fc)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
+		os.Exit(1)
+	}
+	if int64(n) != fi.Size() {
+		fmt.Fprintf(os.Stderr, "Only part of file is read")
+		os.Exit(1)
+	}
+	fmt.Println(fc)
 }
