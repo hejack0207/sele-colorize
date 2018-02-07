@@ -57,5 +57,5 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Only part of file is read")
 		os.Exit(1)
 	}
-	fmt.Println(fc)
+	fmt.Printf("%s\n", fc)
 }
