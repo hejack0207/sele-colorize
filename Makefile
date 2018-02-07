@@ -1,3 +1,5 @@
+.PHONY: run
+
 all: scolor/scolor
 
 scolor/scolor: scolor/main.go
