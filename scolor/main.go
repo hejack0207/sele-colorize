@@ -59,7 +59,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Only part of file is read")
 		os.Exit(1)
 	}
-	fcstr := fmt.Sprint(fc)
+	fcstr := fmt.Sprintf("%s", fc)
+	//fmt.Println(fcstr)
 	lines := strings.Split(fcstr, "\n")
 	c := color.New(color.FgGreen, color.BgWhite, color.Underline)
 	line_no, _ := strconv.Atoi(lc[0])
@@ -68,6 +69,5 @@ func main() {
 	} else {
 		c.Println("matched:")
 		c.Printf("%s\n", lines[line_no-1])
-		//fmt.Printf("%s\n", lines[0])
 	}
 }
