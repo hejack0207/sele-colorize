@@ -66,6 +66,8 @@ func main() {
 	if line_no < 1 || line_no > len(lines) {
 		fmt.Print("line:" + lc[0] + " no do not exist")
 	} else {
+		c.Println("matched:")
 		c.Printf("%s\n", lines[line_no-1])
+		//fmt.Printf("%s\n", lines[0])
 	}
 }
