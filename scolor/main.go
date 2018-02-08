@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/fatih/color"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -33,7 +35,7 @@ func main() {
 
 	flag.Parse()
 	lc := strings.Split(pos, ",")
-	fmt.Printf("line:%s,column:%s", lc[0], lc[1])
+	fmt.Printf("line:%s,column:%s\n", lc[0], lc[1])
 
 	f, e := os.Open(filepath)
 	defer f.Close()
@@ -57,5 +59,13 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Only part of file is read")
 		os.Exit(1)
 	}
-	fmt.Printf("%s\n", fc)
+	fcstr := fmt.Sprint(fc)
+	lines := strings.Split(fcstr, "\n")
+	c := color.New(color.FgGreen, color.BgWhite, color.Underline)
+	line_no, _ := strconv.Atoi(lc[0])
+	if line_no < 1 || line_no > len(lines) {
+		fmt.Print("line:" + lc[0] + " no do not exist")
+	} else {
+		c.Printf("%s\n", lines[line_no-1])
+	}
 }
