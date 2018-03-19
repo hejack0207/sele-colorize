@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/fatih/color"
+	//"github.com/fatih/color"
 	"os"
-	"strconv"
+	//"strconv"
 	"strings"
 )
 
