@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/fatih/color"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -33,7 +35,7 @@ func main() {
 
 	flag.Parse()
 	lc := strings.Split(pos, ",")
-	fmt.Printf("line:%s,column:%s", lc[0], lc[1])
+	fmt.Printf("line:%s,column:%s\n", lc[0], lc[1])
 
 	f, e := os.Open(filepath)
 	defer f.Close()
