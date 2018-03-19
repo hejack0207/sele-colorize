@@ -64,7 +64,7 @@ func main() {
 	}
 	sfc := string(fc)
 	cPos := Pos{1, 1}
-	fmt.Printf("%s\n", sfc)
+	//fmt.Printf("%s\n", sfc)
 	for i, c := range sfc {
 		if c == '\n' || c == '\r' {
 			cPos.line += 1
