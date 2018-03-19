@@ -57,5 +57,10 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Only part of file is read")
 		os.Exit(1)
 	}
-	fmt.Printf("%s\n", fc)
+	//fmt.Printf("%s\n", fc)
+	sfc := string(fc)
+	fmt.Printf("%s\n", sfc)
+	for i, c := range sfc {
+		fmt.Printf("%n,%s", i, c)
+	}
 }
