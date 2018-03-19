@@ -5,7 +5,7 @@ import (
 	"fmt"
 	//"github.com/fatih/color"
 	"os"
-	//"strconv"
+	"strconv"
 	"strings"
 )
 
@@ -37,6 +37,9 @@ func main() {
 	lc := strings.Split(pos, ",")
 	fmt.Printf("line:%s,column:%s\n", lc[0], lc[1])
 
+	l, _ := strconv.Atoi(lc[0])
+	c, _ := strconv.Atoi(lc[1])
+	ppos := Pos{l, c}
 	f, e := os.Open(filepath)
 	defer f.Close()
 	if e != nil {
@@ -59,10 +62,21 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Only part of file is read")
 		os.Exit(1)
 	}
-	//fmt.Printf("%s\n", fc)
 	sfc := string(fc)
+	cPos := Pos{1, 1}
 	fmt.Printf("%s\n", sfc)
 	for i, c := range sfc {
-		fmt.Printf("%n,%s", i, c)
+		if c == '\n' || c == '\r' {
+			cPos.line += 1
+			cPos.column = 1
+		} else {
+			cPos.column += 1
+		}
+
+		if (cPos.line == ppos.line && cPos.column > ppos.column) ||
+			(cPos.line > ppos.line) {
+			fmt.Println("Selected:" + sfc[:i])
+			break
+		}
 	}
 }
