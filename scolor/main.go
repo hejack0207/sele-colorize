@@ -25,10 +25,10 @@ func main() {
 		offset   int
 		filepath string
 	)
-	flag.StringVar(&start, "start", "1,0", "start position of selection")
-	flag.StringVar(&end, "end", "1,0", "end position of selection")
-	flag.IntVar(&offset, "offset", 0, "offset of bytes in file")
-	flag.StringVar(&pos, "pos", "1,0", "position in input file")
+	flag.StringVar(&start, "start", "1,1", "start position of selection")
+	flag.StringVar(&end, "end", "1,1", "end position of selection")
+	flag.IntVar(&offset, "offset", 1, "offset of bytes in file")
+	flag.StringVar(&pos, "pos", "1,1", "position in input file")
 	flag.StringVar(&filepath, "f", "", "file to print")
 
 	flag.Parse()
